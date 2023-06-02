@@ -33,7 +33,16 @@ class Node {
 // Approach:
 // Time & Space Complexity:
 const isBinarySearchTree = (root) => {
-  // TO DO
+  const bstCheck = (node, min, max) => {
+    if (!node) return true;
+    if (node.val <= min || node.val >= max) {
+      return false;
+    }
+    return (
+      bstCheck(node.left, min, node.val) && bstCheck(node.right, node.val, max)
+    );
+  };
+  return bstCheck(root, -Infinity, Infinity);
 };
 
 module.exports = { isBinarySearchTree };

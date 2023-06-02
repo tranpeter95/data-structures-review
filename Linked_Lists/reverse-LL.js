@@ -11,10 +11,23 @@ class Node {
   }
 }
 
+/*
+a -> b -> c -> d
+d -> c -> b -> a
+*/
+
 // Approach:
 // Time & Space Complexity:
 const reverseList = (head) => {
-  // TO DO
+  let curr = head;
+  let prev = null;
+  while (curr) {
+    const nextNode = curr.next;
+    curr.next = prev;
+    prev = curr;
+    curr = nextNode;
+  }
+  return prev;
 };
 
 module.exports = { reverseList };

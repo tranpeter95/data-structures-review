@@ -33,7 +33,23 @@ class Node {
 // Approach:
 // Time & Space Complexity:
 const invertTree = (root) => {
-  // TO DO
+  // if a node has a left or a right, move it to the other side
+  // do this for all nodes
+  const stack = [root];
+  while (stack.length > 0) {
+    const curr = stack.shift();
+    if (curr.left) {
+      stack.push(curr.left);
+    }
+    if (curr.right) {
+      stack.push(curr.right);
+    }
+    const origLeft = curr.left;
+    const origRight = curr.right;
+    curr.left = origRight;
+    curr.right = origLeft;
+  }
+  return root;
 };
 
 module.exports = { invertTree };

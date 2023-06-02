@@ -21,7 +21,20 @@ class Node {
 // Approach:
 // Time & Space Complexity:
 const bfs = (root) => {
-  // TO DO
+  if (!root) return [];
+  const stack = [root];
+  const final = [];
+  while (stack.length > 0) {
+    const curr = stack.shift();
+    if (curr.left) {
+      stack.push(curr.left);
+    }
+    if (curr.right) {
+      stack.push(curr.right);
+    }
+    final.push(curr.val);
+  }
+  return final;
 };
 
 module.exports = { bfs };

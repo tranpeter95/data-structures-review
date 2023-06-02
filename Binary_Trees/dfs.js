@@ -1,6 +1,6 @@
 /*
  Write a function, dfs, that takes in the root of a binary tree.
- The function should return an array containing all values of the tree in breadth-first order.
+ The function should return an array containing all values of the tree in depth-first order.
       8
     /   \
    1     2
@@ -21,6 +21,17 @@ class Node {
 // Approach:
 // Time & Space Complexity:
 const dfs = (root) => {
-  // TO DO
+  // if you can go left, go left.
+  // if you cant, go right.
+  let curr = root;
+  const output = [];
+  const traverse = (curr) => {
+    if (curr === null) return;
+    output.push(curr.val);
+    traverse(curr.left);
+    traverse(curr.right);
+  };
+  traverse(curr);
+  return output;
 };
 module.exports = { dfs };
